@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import spatial
 from typing import List
+from sentence_transformers import SentenceTransformer
 
 def distances_from_embeddings(
     query_embedding: List[float],
@@ -22,3 +23,8 @@ def distances_from_embeddings(
 def indices_of_nearest_neighbors_from_distances(distances) -> np.ndarray:
     """Return a list of indices of nearest neighbors from a list of distances."""
     return np.argsort(distances)
+
+def getModel():
+    model_id = "multi-qa-mpnet-base-dot-v1"
+    model = SentenceTransformer(model_id)
+    return model

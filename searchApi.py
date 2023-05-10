@@ -4,6 +4,9 @@ import os
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 import openai
+from bson.objectid import ObjectId
+from sentence_transformers import SentenceTransformer
+import pinecone
 from utils import distances_from_embeddings, indices_of_nearest_neighbors_from_distances
 
 
@@ -16,7 +19,7 @@ db_name = os.getenv("DB_NAME")
 db_port = os.getenv("MONGO_PORT")
 client = MongoClient(host=db_uri, port=int(db_port), server_api=ServerApi('1'))
 api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = api_key       
+openai.api_key = api_key  
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
@@ -26,6 +29,7 @@ except Exception as e:
 
 db = client[db_name]
 synthesis_collection = db["synthesis"]
+transcript_collection = db["transcript"]
 
 
 
@@ -57,7 +61,34 @@ def search():
     # Return synthesized document
     return results
 
-
+@app.route(f"/searchConcept", methods=["POST"])
+def searchConcept():
+    query = request.args.get('query')
+    transcript_id = request.args.get('transcript_id')    
+    print(query)
+    print(transcript_id)
+    #create index
+    index_id = "search"
+    index = pinecone.Index(index_id)
+    #get embeddings from db
+    embeddings = transcript_collection.find_one({"_id": ObjectId(transcript_id)},{"_id":0, "embed_index":1})
+    #insert embeddings in index
+    index.upsert(embeddings["embed_index"])
+    #get model
+    model_id = "multi-qa-mpnet-base-dot-v1"
+    model = SentenceTransformer(model_id)
+    #retrieve results of search
+    xq = model.encode(query).tolist()
+    results = index.query(xq, top_k=3, include_metadata=True)
+    print(results)
+    bestStart = results['matches'][0]['metadata']['startTime']
+    bestEnd = results['matches'][0]['metadata']['endTime']
+    bestAnswer = results['matches'][0]['metadata']['ref']
+    print(bestStart)
+    print(bestEnd)
+    print(bestAnswer)
+    return results
+     
     
     
 
