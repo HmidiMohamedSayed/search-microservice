@@ -5,9 +5,7 @@ from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 import openai
 from bson.objectid import ObjectId
-from sentence_transformers import SentenceTransformer
-import pinecone
-from utils import distances_from_embeddings, indices_of_nearest_neighbors_from_distances
+from utils import embed, distances_from_embeddings, indices_of_nearest_neighbors_from_distances
 
 
 
@@ -19,7 +17,6 @@ db_name = os.getenv("DB_NAME")
 db_port = os.getenv("MONGO_PORT")
 client = MongoClient(host=db_uri, port=int(db_port), server_api=ServerApi('1'))
 api_key = os.getenv("OPENAI_API_KEY")
-pinecone_api_key = os.getenv("PINECONE_API_KEY")
 openai.api_key = api_key  
 # Send a ping to confirm a successful connection
 try:
@@ -62,54 +59,25 @@ def search():
     # Return synthesized document
     return results
 
-@app.route(f"/searchConcept", methods=["POST"])
+@app.route(f"/searchTranscript", methods=["POST"])
 def searchConcept():
-    query = request.args.get('query')
-    transcript_id = request.args.get('transcript_id')    
-    print(query)
-    print(transcript_id)
-    #get model
-    model_id = "multi-qa-mpnet-base-dot-v1"
-    model = SentenceTransformer(model_id)
-    dim = model.get_sentence_embedding_dimension()
-    pinecone.init(
-            pinecone_api_key= pinecone_api_key,  # app.pinecone.io
-            environment="asia-southeast1-gcp-free"  # find next to API key
-        )
-     #create index
-    index_id = "smart"
-    if index_id not in pinecone.list_indexes():
-            pinecone.create_index(
-                index_id,
-                dim,
-                metric="dotproduct"
-            )
-    index = pinecone.Index(index_id)
-    print(index.describe_index_stats())
-    #get embeddings from db
-    embeddings = transcript_collection.find_one({"_id": ObjectId(transcript_id)},{"_id":0, "embed_index":1})
-    #insert embeddings in index
-    embeddings_list = embeddings.get("embed_index")
-    for i in range (0,len(embeddings_list[0])):
-        embeddings_list[0][i] = tuple(embeddings_list[0][i])
-    print(type(embeddings_list[0][0][2]))
-    index.upsert(embeddings_list)
-    #retrieve results of search
-    #xq = model.encode(query).tolist()
-    # results = index.query(xq, top_k=3, include_metadata=True)
-    # print(results)
-    # bestStart = results['matches'][0]['metadata']['startTime']
-    # bestEnd = results['matches'][0]['metadata']['endTime']
-    # bestAnswer = results['matches'][0]['metadata']['ref']
-    # #start and end times are in seconds
-    # print(bestStart)
-    # print(bestEnd)
-    # print(bestAnswer)
-    return "done"
+    query = request.args.get('query')   
+    transcript_id = request.args.get('transcript_id') 
+    transcript_srt = transcript_collection.find_one({"_id": ObjectId(transcript_id)}, {"_id":0, "transcript_srt":1})
+    print(transcript_srt["transcript_srt"])
+    index, model = embed(transcript_srt["transcript_srt"])
+    #-------make the query and print the k best results-----------
+    xq = model.encode(query).tolist()
+    results = index.query(xq, top_k=3, include_metadata=True)
+    print(results)
+    bestStart = results['matches'][0]['metadata']['startTime']
+    bestEnd = results['matches'][0]['metadata']['endTime']
+    bestAnswer = results['matches'][0]['metadata']['ref']
+    print(bestStart)
+    print(bestEnd)
+    print(bestAnswer)
+    return str(results)
      
-    
-    
-
 if __name__ == "__main__":
     app.run(debug=True)
 

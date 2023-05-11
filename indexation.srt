@@ -1,0 +1,309 @@
+1
+00:00:00,000 --> 00:00:06,000
+Meet Ann. She often shops from www.shoppingcart.com.
+
+2
+00:00:06,000 --> 00:00:12,000
+She has her information like email ID, address, and credit card details saved on the website
+
+3
+00:00:12,000 --> 00:00:16,000
+to enable a faster and hassle-free shopping experience.
+
+4
+00:00:16,000 --> 00:00:19,000
+The required information is stored in a server.
+
+5
+00:00:19,000 --> 00:00:26,000
+One day, Ann received an email which stated her eligibility for a special discount voucher from shoppingcart.com.
+
+6
+00:00:26,000 --> 00:00:32,000
+In order to receive the coupon code, she was asked to fill in her shoppingcart.com account credentials.
+
+7
+00:00:32,000 --> 00:00:38,000
+This didn't seem fishy to her at the time, as she thought it was just an account verification step.
+
+8
+00:00:38,000 --> 00:00:42,000
+Little did she realize the danger she would be facing.
+
+9
+00:00:42,000 --> 00:00:47,000
+She was knocked off her feet when a substantial amount of money was wiped off her account.
+
+10
+00:00:47,000 --> 00:00:49,000
+How do you think this happened?
+
+11
+00:00:49,000 --> 00:00:53,000
+Well, yes, the email she received was fake.
+
+12
+00:00:53,000 --> 00:00:58,000
+Ann's shoppingcart.com account witnessed unauthorized access from a third party.
+
+13
+00:00:58,000 --> 00:01:04,000
+This type of attack is known as a cyber attack, and the person who carries it out is called a hacker.
+
+14
+00:01:04,000 --> 00:01:11,000
+Could Ann have prevented this attack? Indeed, she could have, with the help of cybersecurity.
+
+15
+00:01:11,000 --> 00:01:16,000
+Cybersecurity involves techniques that help in securing various digital components,
+
+16
+00:01:16,000 --> 00:01:21,000
+networks, data, and computer systems from unauthorized digital access.
+
+17
+00:01:21,000 --> 00:01:27,000
+There are multiple ways to implement cybersecurity, depending on the kind of network you are connected to
+
+18
+00:01:27,000 --> 00:01:30,000
+and the type of cyber attacks you are prone to.
+
+19
+00:01:30,000 --> 00:01:35,000
+So, let's take a look at the various cyber attacks that Ann could have been exposed to.
+
+20
+00:01:35,000 --> 00:01:43,000
+One of the most common types of cyber attacks is a malware attack like Trojan, Adware, and Spyware, to name a few.
+
+21
+00:01:43,000 --> 00:01:47,000
+Had Ann downloaded any suspicious attachments online,
+
+22
+00:01:47,000 --> 00:01:53,000
+her system could have gotten corrupted by certain malicious viruses embedded within the attachments.
+
+23
+00:01:53,000 --> 00:01:58,000
+Next is a phishing attack, the type of cyber attack which Ann experienced.
+
+24
+00:01:58,000 --> 00:02:04,000
+Here, the hacker usually sends fraudulent emails, which appear to be coming from a legitimate source.
+
+25
+00:02:04,000 --> 00:02:11,000
+This is done to install malware or to steal sensitive data like credit card information and login credentials.
+
+26
+00:02:11,000 --> 00:02:15,000
+Another type of attack is the man-in-the-middle attack.
+
+27
+00:02:15,000 --> 00:02:21,000
+Here, the hacker gains access to the information path between Ann's device and the website's server.
+
+28
+00:02:21,000 --> 00:02:24,000
+The hacker's computer takes over Ann's IP address.
+
+29
+00:02:24,000 --> 00:02:30,000
+By doing so, the communication line between Ann and the website is secretly intercepted.
+
+30
+00:02:30,000 --> 00:02:35,000
+This commonly happens with unsecured Wi-Fi networks and also through malware.
+
+31
+00:02:35,000 --> 00:02:39,000
+Password attack is one of the easiest ways to hack a system.
+
+32
+00:02:39,000 --> 00:02:47,000
+Here, Ann's password could have been cracked by using either common passwords or trying all possible alphabetical combinations.
+
+33
+00:02:47,000 --> 00:02:52,000
+To prevent future cyber attacks, Ann sought to implement a few cybersecurity practices.
+
+34
+00:02:52,000 --> 00:02:55,000
+First, she installed a firewall.
+
+35
+00:02:55,000 --> 00:03:00,000
+As the name suggests, it is a virtual wall between Ann's computer and the internet.
+
+36
+00:03:00,000 --> 00:03:05,000
+Firewalls filter the incoming and outgoing traffic from your device to safeguard your network,
+
+37
+00:03:05,000 --> 00:03:10,000
+and they can either be software applications or hardware reinforcements.
+
+38
+00:03:10,000 --> 00:03:13,000
+Secondly, Ann implemented honeypots.
+
+39
+00:03:13,000 --> 00:03:20,000
+Just like how flowers attract bees, dummy computer systems called honeypots are used to attract attackers.
+
+40
+00:03:20,000 --> 00:03:27,000
+These systems are made to look vulnerable in order to deceive attackers, and this in turn defends the real system.
+
+41
+00:03:27,000 --> 00:03:32,000
+In addition to these, she also decided to use unique alphanumeric passwords,
+
+42
+00:03:32,000 --> 00:03:37,000
+anti-virus software, and started avoiding mails from unknown senders.
+
+43
+00:03:37,000 --> 00:03:39,000
+That was Ann's story.
+
+44
+00:03:39,000 --> 00:03:45,000
+Cyberattacks are not just confined to individuals, but also to public and private organizations.
+
+45
+00:03:45,000 --> 00:03:51,000
+The cyberattacks carried out in such places are more deadly, and they result in colossal losses.
+
+46
+00:03:51,000 --> 00:03:58,000
+Motives of such attacks are many, starting from tampering with crucial data to monetary gains.
+
+47
+00:03:58,000 --> 00:04:02,000
+Let's have a look at a few of the cyberattacks that companies are subjected to.
+
+48
+00:04:02,000 --> 00:04:09,000
+Various public sector organizations and large corporations face the Advanced Persistent Threat, APT.
+
+49
+00:04:09,000 --> 00:04:17,000
+In this form of attack, hackers gain access to networks for a prolonged period in order to continuously gain confidential information.
+
+50
+00:04:17,000 --> 00:04:22,000
+Companies also witness the Denial of Service attack, where networks are flooded with traffic,
+
+51
+00:04:22,000 --> 00:04:26,000
+which in turn leaves legitimate service requests unattended.
+
+52
+00:04:26,000 --> 00:04:34,000
+A variant of this is the Distributed Denial of Service, DDoS, attack, when multiple systems are used to launch the attack.
+
+53
+00:04:34,000 --> 00:04:42,000
+When a hacker manipulates a standard SQL query in a database-driven website, it is known as a SQL injection attack.
+
+54
+00:04:42,000 --> 00:04:47,000
+By doing so, hackers can view, edit, and delete tables from databases.
+
+55
+00:04:47,000 --> 00:04:55,000
+Amidst a plethora of cyberattacks, it is indeed a challenge for organizations with several networks and servers to ensure complete security.
+
+56
+00:04:55,000 --> 00:05:05,000
+This is not an easy task, and to help with this, cybersecurity professionals are hired to work on identifying cyber threats and securing a company's network.
+
+57
+00:05:05,000 --> 00:05:08,000
+There are multiple job roles in the field of cybersecurity.
+
+58
+00:05:08,000 --> 00:05:14,000
+If hacking fascinates you, then the role of an ethical hacker is something to be explored.
+
+59
+00:05:14,000 --> 00:05:19,000
+Such professionals try to explain a network's vulnerabilities, just like how a hacker would do,
+
+60
+00:05:19,000 --> 00:05:26,000
+but only to identify those vulnerabilities and resolve them for protection against an actual cyberattack.
+
+61
+00:05:26,000 --> 00:05:33,000
+But if you are looking to design robust security structures, then the role of a security architect is more apt.
+
+62
+00:05:33,000 --> 00:05:39,000
+A Chief Information Security Officer, CISO, plays a crucial role in enterprise security
+
+63
+00:05:39,000 --> 00:05:44,000
+and is entrusted with the overall safety of the information in an organization.
+
+64
+00:05:44,000 --> 00:05:52,000
+So, here's a question for you. Identify the type of cyberattack where the hacker's system takes over the client's IP address.
+
+65
+00:05:52,000 --> 00:05:55,000
+A. DDoS attack
+
+66
+00:05:55,000 --> 00:05:58,000
+B. Man-in-the-middle attack
+
+67
+00:05:58,000 --> 00:06:00,000
+C. Phishing attack
+
+68
+00:06:00,000 --> 00:06:03,000
+D. Password attack
+
+69
+00:06:03,000 --> 00:06:06,000
+Give it a thought and leave your answers in the comment section below.
+
+70
+00:06:06,000 --> 00:06:09,000
+Three lucky winners will receive Amazon gift vouchers.
+
+71
+00:06:09,000 --> 00:06:17,000
+With the increase in the production of global digital data, it is anticipated that cyberattacks will quadruple in the near future.
+
+72
+00:06:17,000 --> 00:06:22,000
+Organizations are going to need cybersecurity professionals who can prevent these attacks.
+
+73
+00:06:22,000 --> 00:06:28,000
+A career in the field of cybersecurity is lucrative and a very smart decision for professionals now.
+
+74
+00:06:28,000 --> 00:06:35,000
+So, what are you waiting for? Get certified with SimplyLearn and become a cybersecurity expert.
+
+75
+00:06:35,000 --> 00:06:39,000
+If you enjoyed this video, a thumbs up would be really appreciated.
+
+76
+00:06:39,000 --> 00:06:48,000
+Don't forget to subscribe to the SimplyLearn channel and hit the bell icon to never miss an update on the latest trending technologies.
+
+77
+00:06:48,000 --> 00:07:07,000
+Thank you for watching and stay tuned for more from SimplyLearn.
+
+
