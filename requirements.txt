@@ -1,0 +1,8 @@
+python-dotenv
+openai
+pymongo
+flask
+numpy
+scipy
+sentence-transformers
+pinecone-client
