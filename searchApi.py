@@ -63,9 +63,8 @@ def search():
 def searchConcept():
     query = request.args.get('query')   
     transcript_id = request.args.get('transcript_id') 
-    transcript_srt = transcript_collection.find_one({"_id": ObjectId(transcript_id)}, {"_id":0, "transcript_srt":1})
-    print(transcript_srt["transcript_srt"])
-    index, model = embed(transcript_srt["transcript_srt"])
+    transcript_srt = transcript_collection.find_one({"_id": ObjectId(transcript_id)}, {"_id":0, "srt":1})
+    index, model = embed(transcript_srt["srt"])
     #-------make the query and print the k best results-----------
     xq = model.encode(query).tolist()
     results = index.query(xq, top_k=3, include_metadata=True)
