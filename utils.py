@@ -18,13 +18,11 @@ def distances_from_embeddings(
     ]
     return distances
 
-
-
 def indices_of_nearest_neighbors_from_distances(distances) -> np.ndarray:
     """Return a list of indices of nearest neighbors from a list of distances."""
     return np.argsort(distances)
 
-def getModel():
+def getPineconeIndex():
     model_id = "multi-qa-mpnet-base-dot-v1"
     model = SentenceTransformer(model_id)
     return model

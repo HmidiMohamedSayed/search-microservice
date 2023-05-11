@@ -19,6 +19,7 @@ db_name = os.getenv("DB_NAME")
 db_port = os.getenv("MONGO_PORT")
 client = MongoClient(host=db_uri, port=int(db_port), server_api=ServerApi('1'))
 api_key = os.getenv("OPENAI_API_KEY")
+pinecone_api_key = os.getenv("PINECONE_API_KEY")
 openai.api_key = api_key  
 # Send a ping to confirm a successful connection
 try:
@@ -67,27 +68,44 @@ def searchConcept():
     transcript_id = request.args.get('transcript_id')    
     print(query)
     print(transcript_id)
-    #create index
-    index_id = "search"
-    index = pinecone.Index(index_id)
-    #get embeddings from db
-    embeddings = transcript_collection.find_one({"_id": ObjectId(transcript_id)},{"_id":0, "embed_index":1})
-    #insert embeddings in index
-    index.upsert(embeddings["embed_index"])
     #get model
     model_id = "multi-qa-mpnet-base-dot-v1"
     model = SentenceTransformer(model_id)
+    dim = model.get_sentence_embedding_dimension()
+    pinecone.init(
+            pinecone_api_key= pinecone_api_key,  # app.pinecone.io
+            environment="asia-southeast1-gcp-free"  # find next to API key
+        )
+     #create index
+    index_id = "smart"
+    if index_id not in pinecone.list_indexes():
+            pinecone.create_index(
+                index_id,
+                dim,
+                metric="dotproduct"
+            )
+    index = pinecone.Index(index_id)
+    print(index.describe_index_stats())
+    #get embeddings from db
+    embeddings = transcript_collection.find_one({"_id": ObjectId(transcript_id)},{"_id":0, "embed_index":1})
+    #insert embeddings in index
+    embeddings_list = embeddings.get("embed_index")
+    for i in range (0,len(embeddings_list[0])):
+        embeddings_list[0][i] = tuple(embeddings_list[0][i])
+    print(type(embeddings_list[0][0][2]))
+    index.upsert(embeddings_list)
     #retrieve results of search
-    xq = model.encode(query).tolist()
-    results = index.query(xq, top_k=3, include_metadata=True)
-    print(results)
-    bestStart = results['matches'][0]['metadata']['startTime']
-    bestEnd = results['matches'][0]['metadata']['endTime']
-    bestAnswer = results['matches'][0]['metadata']['ref']
-    print(bestStart)
-    print(bestEnd)
-    print(bestAnswer)
-    return results
+    #xq = model.encode(query).tolist()
+    # results = index.query(xq, top_k=3, include_metadata=True)
+    # print(results)
+    # bestStart = results['matches'][0]['metadata']['startTime']
+    # bestEnd = results['matches'][0]['metadata']['endTime']
+    # bestAnswer = results['matches'][0]['metadata']['ref']
+    # #start and end times are in seconds
+    # print(bestStart)
+    # print(bestEnd)
+    # print(bestAnswer)
+    return "done"
      
     
     
