@@ -4,6 +4,7 @@ import os
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 import openai
+import json
 from bson.objectid import ObjectId
 from utils import embed, distances_from_embeddings, indices_of_nearest_neighbors_from_distances
 
@@ -75,7 +76,8 @@ def searchConcept():
     print(bestStart)
     print(bestEnd)
     print(bestAnswer)
-    return str(results)
+    results = results.to_dict()
+    return results
      
 if __name__ == "__main__":
     app.run(debug=True)
