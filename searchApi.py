@@ -34,7 +34,7 @@ transcript_collection = db["transcript"]
 
 
 
-@app.route(f"/search", methods=["POST"])
+@app.route(f"/search", methods=["GET"])
 def search():
     key = request.args.get('key')    
     print(key)
@@ -56,7 +56,7 @@ def search():
     search_result = list(search_result)    
     results=[]
     for search in search_result :
-        results.append({'_id':str(search["_id"]),'title':search["title"],'text':search["text"],'tags':search["tags"]})
+        results.append({'_id':str(search["_id"]),'title':search["title"],'text':search["text"],'tags':search["tags"] })
     print(results)
     print(search_result)
     # Return synthesized document
